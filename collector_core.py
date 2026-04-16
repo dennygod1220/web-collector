@@ -1,3 +1,4 @@
+import os
 import yaml
 from datetime import datetime
 from pathlib import Path
@@ -16,8 +17,12 @@ def save_article(content: str, url: str, title: str, tags: list, output_dir: str
         output_dir: 輸出目錄，預設 AI_Brain/raw/articles/
     """
     if output_dir is None:
-        # Default: user's AI Brain mount path
-        base = Path("/mnt/c/Users/denny/Downloads/SillyTavern/koboldcpp-config/AI_Brain")
+        # Precedence: AI_BRAIN_PATH env var > hardcoded default
+        env_path = os.environ.get("AI_BRAIN_PATH")
+        if env_path:
+            base = Path(env_path)
+        else:
+            base = Path("/mnt/c/Users/denny/Downloads/SillyTavern/koboldcpp-config/AI_Brain")
         output_dir = base / "raw" / "articles"
     else:
         output_dir = Path(output_dir)
