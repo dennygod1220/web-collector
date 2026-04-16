@@ -16,7 +16,8 @@ def save_article(content: str, url: str, title: str, tags: list, output_dir: str
         output_dir: 輸出目錄，預設 AI_Brain/raw/articles/
     """
     if output_dir is None:
-        base = Path(__file__).parent.parent.resolve()
+        # Default: user's AI Brain mount path
+        base = Path("/mnt/c/Users/denny/Downloads/SillyTavern/koboldcpp-config/AI_Brain")
         output_dir = base / "raw" / "articles"
     else:
         output_dir = Path(output_dir)
