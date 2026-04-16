@@ -1,0 +1,7 @@
+name: web-collector
+version: 0.1.0
+description: Periodic web collector that ingests cleaned Markdown into AI_Brain
+provides_tools:
+  - collect_url
+  - collect_content
+requires_env: []
